@@ -13,8 +13,24 @@ public class LinkedList<T> {
 		}
 	}
 	
-	public void remove(Node<T> value) {
-		
+	public void remove(Node<T> node) {
+		if(head == node && tail == node){
+			head = null;
+			tail = null;
+		}else if(node == tail){
+			tail = tail.getPreviousNode();
+			tail.setNextNode(null);
+		}else if(node == head){
+			head = head.getNextNode();
+			head.setPreviousNode(null);
+			
+		}else{
+			Node<T> previous = node.getPreviousNode();
+			Node<T> next = node.getNextNode();
+			previous.setNextNode(next);
+			next.setPreviousNode(previous);
+			
+		}
 		
 	}
 	
